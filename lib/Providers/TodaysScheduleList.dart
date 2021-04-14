@@ -27,8 +27,6 @@ class TodaysScheduleList extends GetxController {
               time: value.data()['time'][index],
             ),
           );
-        } else {
-          print('Unhandled Event.');
         }
       }
       //Once For Loop is done, set the observable value of "todaysSchedules" equal to "dataCatcher"
