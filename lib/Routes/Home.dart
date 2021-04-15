@@ -8,6 +8,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 import 'package:tyto_professor/Constants/TytoColors.dart';
 import 'package:tyto_professor/Providers/TodaysScheduleList.dart';
 import 'package:tyto_professor/Widgets/Home/Header.dart';
+import 'package:tyto_professor/Widgets/Home/ScheduleList.dart';
 import 'package:tyto_professor/Widgets/Home/ScheduleListHeader.dart';
 
 class Home extends StatefulWidget {
@@ -51,56 +52,7 @@ class _HomeState extends State<Home> {
           children: [
             Header(),
             ScheduleListHeader(),
-            Obx(
-              () => TodaysScheduleList.isFetchingData.value
-                  ? Expanded(
-                      child: Center(
-                        child: SizedBox(
-                          height: 150.0,
-                          width: 150.0,
-                          child: Column(
-                            children: [
-                              SpinKitFadingCube(
-                                color: TytoColors.darkMintGreen,
-                                size: 55.0,
-                              ),
-                              SizedBox(
-                                height: 50.0,
-                              ),
-                              Text(
-                                'Loading...',
-                                style: GoogleFonts.raleway(
-                                  color: TytoColors.white,
-                                  fontSize: 20.0,
-                                ),
-                              ),
-                            ],
-                          ),
-                        ),
-                      ),
-                    )
-                  : Expanded(
-                      child: Obx(
-                        () => GridView.builder(
-                          gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                            childAspectRatio: 3 / 2,
-                            crossAxisCount: 3,
-                            crossAxisSpacing: 20.0,
-                            mainAxisSpacing: 20.0,
-                          ),
-                          itemCount: TodaysScheduleList.todaysSchedules.length,
-                          itemBuilder: (context, index) {
-                            return Padding(
-                              padding: const EdgeInsets.all(8.0),
-                              child: Text(
-                                TodaysScheduleList.todaysSchedules[index].time.toString(),
-                              ),
-                            );
-                          },
-                        ),
-                      ),
-                    ),
-            ),
+            ScheduleList(),
           ],
         ),
       ),
