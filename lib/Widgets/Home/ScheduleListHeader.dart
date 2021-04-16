@@ -27,8 +27,7 @@ class _ScheduleListHeaderState extends State<ScheduleListHeader> {
     var _screenHeight = MediaQuery.of(context).size.height;
     var _screenWidth = MediaQuery.of(context).size.width;
     return Padding(
-      padding: EdgeInsets.symmetric(
-          horizontal: _screenWidth * 0.02, vertical: _screenHeight * 0.02),
+      padding: EdgeInsets.symmetric(horizontal: _screenWidth * 0.02, vertical: _screenHeight * 0.02),
       child: Column(
         mainAxisAlignment: MainAxisAlignment.start,
         crossAxisAlignment: CrossAxisAlignment.center,
@@ -45,10 +44,11 @@ class _ScheduleListHeaderState extends State<ScheduleListHeader> {
                   ),
                 ),
                 TextSpan(
-                  text: '\n$date',
+                  text: ' \nDate: $date',
                   style: GoogleFonts.raleway(
                     color: TytoColors.white,
-                    fontSize: 20.0,
+                    fontSize: 15.0,
+                    fontStyle: FontStyle.italic,
                   ),
                 ),
               ],

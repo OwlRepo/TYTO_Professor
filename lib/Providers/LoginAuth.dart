@@ -15,11 +15,7 @@ class LoginAuth extends GetxController {
 
   static var _db = FirebaseFirestore.instance.collection('ProfessorAccounts');
 
-  static _showLoginAuthFeedback(
-      {BuildContext context,
-      String message,
-      Color backgroundColor,
-      Color textColor}) {
+  static _showLoginAuthFeedback({BuildContext context, String message, Color backgroundColor, Color textColor}) {
     showToastWidget(
       Container(
         padding: EdgeInsets.all(
@@ -55,10 +51,8 @@ class LoginAuth extends GetxController {
     );
   }
 
-  static void authenticateLogin(
-      {String accountID, String password, BuildContext context}) async {
-    SharedPreferences _sharedPreferences =
-        await SharedPreferences.getInstance();
+  static void authenticateLogin({String accountID, String password, BuildContext context}) async {
+    SharedPreferences _sharedPreferences = await SharedPreferences.getInstance();
     _sharedPreferences.setBool('isLoggedIn', false);
     isAuthenticating.value = true;
 
@@ -69,8 +63,7 @@ class LoginAuth extends GetxController {
         message: 'Please fill out all the text fields.',
       );
       isAuthenticating.value = false;
-    } else if (await _db.doc(accountID).get().then((doc) => doc.exists) ==
-        true) {
+    } else if (await _db.doc(accountID).get().then((doc) => doc.exists) == true) {
       _db.doc(accountID).get().then((snapshot) {
         if (snapshot.data()['password'].toString() == password) {
           _sharedPreferences.setBool('isLoggedIn', true);
@@ -109,8 +102,7 @@ class LoginAuth extends GetxController {
   }
 
   static void logOut() async {
-    SharedPreferences _sharedPreferences =
-        await SharedPreferences.getInstance();
+    SharedPreferences _sharedPreferences = await SharedPreferences.getInstance();
     _sharedPreferences.setBool('isLoggedIn', false);
     _sharedPreferences.setString('loggedInAccountID', '');
     Get.toNamed(Login.routeName);
