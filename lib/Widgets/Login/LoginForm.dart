@@ -66,6 +66,15 @@ class _LoginFormState extends State<LoginForm> {
               cursorColor: TytoColors.darkMintGreen,
               textAlignVertical: TextAlignVertical.center,
               textInputAction: TextInputAction.done,
+              onEditingComplete: () {
+                LoginAuth.isAuthenticating.value == true
+                    ? print('autheticating')
+                    : LoginAuth.authenticateLogin(
+                        accountID: _accountIDController.text,
+                        password: _generateMd5(input: _passwordController.text),
+                        context: context,
+                      );
+              },
               decoration: InputDecoration(
                 hintText: 'Password',
                 hintStyle: GoogleFonts.raleway(),
@@ -86,13 +95,9 @@ class _LoginFormState extends State<LoginForm> {
                       });
                     },
                     child: FaIcon(
-                      _isPasswordHidden
-                          ? FontAwesomeIcons.eyeSlash
-                          : FontAwesomeIcons.eye,
+                      _isPasswordHidden ? FontAwesomeIcons.eyeSlash : FontAwesomeIcons.eye,
                       size: 20.0,
-                      color: _isPasswordHidden
-                          ? Colors.grey
-                          : TytoColors.darkMintGreen,
+                      color: _isPasswordHidden ? Colors.grey : TytoColors.darkMintGreen,
                     ),
                   ),
                 ),

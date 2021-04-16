@@ -7,6 +7,7 @@ import 'package:tyto_professor/Routes/Home.dart';
 import 'package:tyto_professor/Routes/LoadingScreen.dart';
 import 'package:tyto_professor/Routes/Login.dart';
 import 'package:tyto_professor/Routes/NotSupported.dart';
+import 'package:tyto_professor/Wrapper.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -25,8 +26,12 @@ class _MyAppState extends State<MyApp> {
     return GetMaterialApp(
       title: 'TYTO',
       defaultTransition: Transition.fadeIn,
-      initialRoute: Login.routeName,
+      initialRoute: Wrapper.routeName,
       getPages: [
+        GetPage(
+          name: Wrapper.routeName,
+          page: () => Wrapper(),
+        ),
         GetPage(
           name: Login.routeName,
           page: () => Login(),
