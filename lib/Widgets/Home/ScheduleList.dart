@@ -122,6 +122,8 @@ class _ScheduleListState extends State<ScheduleList> {
                       child: Card(
                         clipBehavior: Clip.antiAliasWithSaveLayer,
                         color: TytoColors.lightBlack,
+                        elevation: 10.0,
+                        shadowColor: TytoColors.black,
                         shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(
                             20.0,

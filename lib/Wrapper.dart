@@ -13,6 +13,7 @@ class Wrapper extends StatefulWidget {
 
 class _WrapperState extends State<Wrapper> {
   var _isUserLoggedIn = false;
+
   _checkIfUserIsLoggedIn() async {
     SharedPreferences _sharedPreferences = await SharedPreferences.getInstance();
     print(_sharedPreferences.getBool('isLoggedIn').toString());
