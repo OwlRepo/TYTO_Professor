@@ -27,7 +27,8 @@ class _ScheduleListHeaderState extends State<ScheduleListHeader> {
     var _screenHeight = MediaQuery.of(context).size.height;
     var _screenWidth = MediaQuery.of(context).size.width;
     return Padding(
-      padding: EdgeInsets.symmetric(horizontal: _screenWidth * 0.02, vertical: _screenHeight * 0.02),
+      padding: EdgeInsets.symmetric(
+          horizontal: _screenWidth * 0.02, vertical: _screenHeight * 0.02),
       child: Column(
         mainAxisAlignment: MainAxisAlignment.start,
         crossAxisAlignment: CrossAxisAlignment.center,
@@ -39,7 +40,7 @@ class _ScheduleListHeaderState extends State<ScheduleListHeader> {
                   text: 'TODAY\'S CLASS SCHEDULE\n',
                   style: GoogleFonts.raleway(
                     color: TytoColors.white,
-                    fontSize: 40.0,
+                    fontSize: _screenWidth < 370 ? 20.0 : 40.0,
                     fontWeight: FontWeight.bold,
                   ),
                 ),

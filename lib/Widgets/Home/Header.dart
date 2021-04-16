@@ -104,25 +104,39 @@ class Header extends StatelessWidget {
               ),
             ),
           ),
-          ElevatedButton.icon(
-            onPressed: () {
-              showMenuModal(context);
-            },
-            icon: FaIcon(FontAwesomeIcons.bars),
-            label: Text(
-              'MENU',
-              style: GoogleFonts.raleway(
-                color: TytoColors.white,
-              ),
-            ),
-            style: ElevatedButton.styleFrom(
-              primary: TytoColors.darkMintGreen,
-              padding: EdgeInsets.symmetric(
-                horizontal: 30.0,
-                vertical: 20.0,
-              ),
-            ),
-          ),
+          _screenWidth < 300
+              ? Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: IconButton(
+                    icon: FaIcon(
+                      FontAwesomeIcons.bars,
+                      color: TytoColors.darkMintGreen,
+                      size: 20.0,
+                    ),
+                    onPressed: () {
+                      showMenuModal(context);
+                    },
+                  ),
+                )
+              : ElevatedButton.icon(
+                  onPressed: () {
+                    showMenuModal(context);
+                  },
+                  icon: FaIcon(FontAwesomeIcons.bars),
+                  label: Text(
+                    'MENU',
+                    style: GoogleFonts.raleway(
+                      color: TytoColors.white,
+                    ),
+                  ),
+                  style: ElevatedButton.styleFrom(
+                    primary: TytoColors.darkMintGreen,
+                    padding: EdgeInsets.symmetric(
+                      horizontal: 30.0,
+                      vertical: 20.0,
+                    ),
+                  ),
+                ),
         ],
       ),
     );

@@ -7,7 +7,11 @@ import 'package:tyto_professor/Constants/TytoColors.dart';
 import 'package:tyto_professor/Providers/TodaysScheduleList.dart';
 
 class ScheduleList extends StatefulWidget {
-  static _showRoomID({BuildContext context, String message, Color backgroundColor, Color textColor}) {
+  static _showRoomID(
+      {BuildContext context,
+      String message,
+      Color backgroundColor,
+      Color textColor}) {
     showToastWidget(
       Container(
         padding: EdgeInsets.all(
@@ -136,7 +140,10 @@ class _ScheduleListState extends State<ScheduleList> {
                             Spacer(),
                             Center(
                               child: Text(
-                                'SECTION ' + TodaysScheduleList.todaysSchedules[index].section.toString(),
+                                'SECTION ' +
+                                    TodaysScheduleList
+                                        .todaysSchedules[index].section
+                                        .toString(),
                                 style: GoogleFonts.raleway(
                                   color: TytoColors.white,
                                   fontSize: _screenWidth < 480 ? 10.0 : 20.0,
@@ -148,10 +155,11 @@ class _ScheduleListState extends State<ScheduleList> {
                             ),
                             Center(
                               child: Text(
-                                TodaysScheduleList.todaysSchedules[index].time.toString(),
+                                TodaysScheduleList.todaysSchedules[index].time
+                                    .toString(),
                                 style: GoogleFonts.raleway(
                                   color: TytoColors.white,
-                                  fontSize: _screenWidth < 480 ? 30.0 : 40.0,
+                                  fontSize: _screenWidth < 480 ? 20.0 : 40.0,
                                   fontWeight: FontWeight.bold,
                                 ),
                               ),
@@ -165,7 +173,10 @@ class _ScheduleListState extends State<ScheduleList> {
                                 ScheduleList._showRoomID(
                                   context: context,
                                   backgroundColor: TytoColors.darkMintGreen,
-                                  message: 'RoomID: ' + TodaysScheduleList.todaysSchedules[index].roomID.toString(),
+                                  message: 'RoomID: ' +
+                                      TodaysScheduleList
+                                          .todaysSchedules[index].roomID
+                                          .toString(),
                                   textColor: TytoColors.white,
                                 );
                               },

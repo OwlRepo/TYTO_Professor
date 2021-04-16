@@ -1,10 +1,8 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:shared_preferences/shared_preferences.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:tyto_professor/Routes/Home.dart';
-import 'package:tyto_professor/Routes/LoadingScreen.dart';
 import 'package:tyto_professor/Routes/Login.dart';
 import 'package:tyto_professor/Routes/NotSupported.dart';
 import 'package:tyto_professor/Wrapper.dart';

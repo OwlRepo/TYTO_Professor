@@ -15,12 +15,14 @@ class _WrapperState extends State<Wrapper> {
   var _isUserLoggedIn = false;
 
   _checkIfUserIsLoggedIn() async {
-    SharedPreferences _sharedPreferences = await SharedPreferences.getInstance();
-    print(_sharedPreferences.getBool('isLoggedIn').toString());
-    if (_sharedPreferences.getBool('isLoggedIn')) {
-      setState(() {
-        _isUserLoggedIn = !_isUserLoggedIn;
-      });
+    SharedPreferences _sharedPreferences =
+        await SharedPreferences.getInstance();
+    if (_sharedPreferences.getBool('isLoggedIn') != null) {
+      if (_sharedPreferences.getBool('isLoggedIn')) {
+        setState(() {
+          _isUserLoggedIn = !_isUserLoggedIn;
+        });
+      }
     }
   }
 
