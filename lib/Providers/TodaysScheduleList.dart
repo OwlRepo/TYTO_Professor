@@ -6,16 +6,22 @@ import 'package:tyto_professor/Models/PerDayScheduleDataModel.dart';
 
 class TodaysScheduleList extends GetxController {
   static var _logger = Logger();
-  static var _fbInstance = FirebaseFirestore.instance.collection('Schedules').doc('Professor');
+  static var _fbInstance =
+      FirebaseFirestore.instance.collection('Schedules').doc('Professor');
   static RxList<dynamic> todaysSchedules = [].obs;
   static RxBool isFetchingData = false.obs;
 
-  static Future<void> fetchData({@required String accountID, @required currentDay}) async {
+  static Future<void> fetchData(
+      {@required String accountID, @required currentDay}) async {
     try {
       //set isFetchingData to true to display the circular progress indicator first
       isFetchingData.value = !isFetchingData.value;
       //connect to db
-      await _fbInstance.collection(accountID).doc(currentDay).get().then((value) {
+      await _fbInstance
+          .collection(accountID)
+          .doc(currentDay)
+          .get()
+          .then((value) {
         //initialize a list that will catch all the incoming data
         List<PerDayScheduleDataModel> dataCatcher = [];
         //For loop to filter out the empty indexes in List of "time" in JSON
@@ -36,7 +42,6 @@ class TodaysScheduleList extends GetxController {
         todaysSchedules.value = dataCatcher;
       }).then((_) {
         isFetchingData.value = !isFetchingData.value;
-        _logger.i('Done loading data');
       });
     } catch (e) {
       _logger.e(e);
