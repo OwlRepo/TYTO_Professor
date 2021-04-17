@@ -3,10 +3,7 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:modal_bottom_sheet/modal_bottom_sheet.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 import 'package:tyto_professor/Constants/TytoColors.dart';
-import 'package:tyto_professor/Providers/LoginAuth.dart';
-import 'package:tyto_professor/Providers/TodaysScheduleList.dart';
 import 'package:tyto_professor/Routes/Home.dart';
 
 class Header extends StatelessWidget {
@@ -15,54 +12,55 @@ class Header extends StatelessWidget {
     var _screenWidth = MediaQuery.of(context).size.width;
     const List _menuButtons = [];
     showMaterialModalBottomSheet(
-        context: context,
-        backgroundColor: Colors.transparent,
-        builder: (context) {
-          return Container(
-            height: MediaQuery.of(context).size.height * 0.9,
-            padding: EdgeInsets.symmetric(
-              horizontal: _screenWidth * 0.06,
-              vertical: _screenHeight * 0.05,
-            ),
-            decoration: BoxDecoration(
-              color: TytoColors.lightBlack,
-              borderRadius: BorderRadius.only(
-                topLeft: Radius.circular(
-                  80.0,
-                ),
-                topRight: Radius.circular(
-                  80.0,
-                ),
+      context: context,
+      backgroundColor: Colors.transparent,
+      builder: (context) {
+        return Container(
+          height: MediaQuery.of(context).size.height * 0.9,
+          padding: EdgeInsets.symmetric(
+            horizontal: _screenWidth * 0.06,
+            vertical: _screenHeight * 0.05,
+          ),
+          decoration: BoxDecoration(
+            color: TytoColors.lightBlack,
+            borderRadius: BorderRadius.only(
+              topLeft: Radius.circular(
+                80.0,
+              ),
+              topRight: Radius.circular(
+                80.0,
               ),
             ),
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.start,
-              crossAxisAlignment: CrossAxisAlignment.stretch,
-              children: [
-                Row(
-                  children: [
-                    FaIcon(
-                      FontAwesomeIcons.bars,
+          ),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.start,
+            crossAxisAlignment: CrossAxisAlignment.stretch,
+            children: [
+              Row(
+                children: [
+                  FaIcon(
+                    FontAwesomeIcons.bars,
+                    color: TytoColors.white,
+                    size: 40.0,
+                  ),
+                  SizedBox(
+                    width: 20.0,
+                  ),
+                  Text(
+                    'MENU',
+                    style: GoogleFonts.raleway(
                       color: TytoColors.white,
-                      size: 40.0,
+                      fontWeight: FontWeight.bold,
+                      fontSize: 40.0,
                     ),
-                    SizedBox(
-                      width: 20.0,
-                    ),
-                    Text(
-                      'MENU',
-                      style: GoogleFonts.raleway(
-                        color: TytoColors.white,
-                        fontWeight: FontWeight.bold,
-                        fontSize: 40.0,
-                      ),
-                    ),
-                  ],
-                ),
-              ],
-            ),
-          );
-        });
+                  ),
+                ],
+              ),
+            ],
+          ),
+        );
+      },
+    );
   }
 
   @override

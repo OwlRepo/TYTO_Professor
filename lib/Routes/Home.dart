@@ -3,6 +3,7 @@ import 'package:intl/intl.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:tyto_professor/Constants/TytoColors.dart';
 import 'package:tyto_professor/Providers/TodaysScheduleList.dart';
+import 'package:tyto_professor/Routes/NotSupported.dart';
 import 'package:tyto_professor/Widgets/Home/Header.dart';
 import 'package:tyto_professor/Widgets/Home/ScheduleList.dart';
 import 'package:tyto_professor/Widgets/Home/ScheduleListHeader.dart';
@@ -15,7 +16,8 @@ class Home extends StatefulWidget {
 
 class _HomeState extends State<Home> {
   _fetchSchedList() async {
-    SharedPreferences _sharedPreferences = await SharedPreferences.getInstance();
+    SharedPreferences _sharedPreferences =
+        await SharedPreferences.getInstance();
 
     DateTime rawDateData = DateTime.now();
     var formatter = DateFormat('EEEE');
@@ -35,23 +37,27 @@ class _HomeState extends State<Home> {
 
   @override
   Widget build(BuildContext context) {
+    var _screenHeight = MediaQuery.of(context).size.height;
+    var _screenWidth = MediaQuery.of(context).size.width;
     return Scaffold(
-      body: Container(
-        height: MediaQuery.of(context).size.height,
-        width: MediaQuery.of(context).size.width,
-        decoration: BoxDecoration(
-          color: TytoColors.black,
-        ),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.start,
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Header(),
-            ScheduleListHeader(),
-            ScheduleList(),
-          ],
-        ),
-      ),
+      body: _screenWidth < 250 && _screenHeight < 650
+          ? NotSupported()
+          : Container(
+              height: _screenHeight,
+              width: _screenWidth,
+              decoration: BoxDecoration(
+                color: TytoColors.black,
+              ),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.start,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Header(),
+                  ScheduleListHeader(),
+                  ScheduleList(),
+                ],
+              ),
+            ),
     );
   }
 }

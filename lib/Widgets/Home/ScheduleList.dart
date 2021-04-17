@@ -7,11 +7,12 @@ import 'package:tyto_professor/Constants/TytoColors.dart';
 import 'package:tyto_professor/Providers/TodaysScheduleList.dart';
 
 class ScheduleList extends StatefulWidget {
-  static _showRoomID(
-      {BuildContext context,
-      String message,
-      Color backgroundColor,
-      Color textColor}) {
+  static _showRoomID({
+    BuildContext context,
+    String message,
+    Color backgroundColor,
+    Color textColor,
+  }) {
     showToastWidget(
       Container(
         padding: EdgeInsets.all(
@@ -105,101 +106,99 @@ class _ScheduleListState extends State<ScheduleList> {
               ),
             )
           : Expanded(
-              child: Obx(
-                () => GridView.builder(
-                  gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                    childAspectRatio: 3 / 2,
-                    crossAxisCount: _screenWidth < 1000
-                        ? 1
-                        : _screenWidth < 1400
-                            ? 2
-                            : 3,
-                    crossAxisSpacing: 40.0,
-                    mainAxisSpacing: 40.0,
-                  ),
-                  padding: const EdgeInsets.all(
-                    20.0,
-                  ),
-                  itemCount: TodaysScheduleList.todaysSchedules.length,
-                  itemBuilder: (context, index) {
-                    return Container(
-                      child: Card(
-                        clipBehavior: Clip.antiAliasWithSaveLayer,
-                        color: TytoColors.lightBlack,
-                        elevation: 10.0,
-                        shadowColor: TytoColors.black,
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(
-                            20.0,
-                          ),
-                        ),
-                        child: Column(
-                          mainAxisAlignment: MainAxisAlignment.end,
-                          crossAxisAlignment: CrossAxisAlignment.stretch,
-                          children: [
-                            Spacer(),
-                            Center(
-                              child: Text(
-                                'SECTION ' +
-                                    TodaysScheduleList
-                                        .todaysSchedules[index].section
-                                        .toString(),
-                                style: GoogleFonts.raleway(
-                                  color: TytoColors.white,
-                                  fontSize: _screenWidth < 480 ? 10.0 : 20.0,
-                                ),
-                              ),
-                            ),
-                            Divider(
-                              color: Colors.transparent,
-                            ),
-                            Center(
-                              child: Text(
-                                TodaysScheduleList.todaysSchedules[index].time
-                                    .toString(),
-                                style: GoogleFonts.raleway(
-                                  color: TytoColors.white,
-                                  fontSize: _screenWidth < 480 ? 20.0 : 40.0,
-                                  fontWeight: FontWeight.bold,
-                                ),
-                              ),
-                            ),
-                            Spacer(),
-                            ElevatedButton(
-                              style: ElevatedButton.styleFrom(
-                                primary: TytoColors.darkMintGreen,
-                              ),
-                              onPressed: () {
-                                ScheduleList._showRoomID(
-                                  context: context,
-                                  backgroundColor: TytoColors.darkMintGreen,
-                                  message: 'RoomID: ' +
-                                      TodaysScheduleList
-                                          .todaysSchedules[index].roomID
-                                          .toString(),
-                                  textColor: TytoColors.white,
-                                );
-                              },
-                              child: Padding(
-                                padding: const EdgeInsets.symmetric(
-                                  vertical: 20.0,
-                                ),
-                                child: Text(
-                                  'ENTER ROOM',
-                                  style: GoogleFonts.raleway(
-                                    color: TytoColors.white,
-                                    fontWeight: FontWeight.bold,
-                                    fontSize: 20.0,
-                                  ),
-                                ),
-                              ),
-                            ),
-                          ],
+              child: GridView.builder(
+                gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                  childAspectRatio: 3 / 2,
+                  crossAxisCount: _screenWidth < 1000
+                      ? 1
+                      : _screenWidth < 1400
+                          ? 2
+                          : 3,
+                  crossAxisSpacing: 40.0,
+                  mainAxisSpacing: 40.0,
+                ),
+                padding: const EdgeInsets.all(
+                  20.0,
+                ),
+                itemCount: TodaysScheduleList.todaysSchedules.length,
+                itemBuilder: (context, index) {
+                  return Container(
+                    child: Card(
+                      clipBehavior: Clip.antiAliasWithSaveLayer,
+                      color: TytoColors.lightBlack,
+                      elevation: 10.0,
+                      shadowColor: TytoColors.black,
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(
+                          20.0,
                         ),
                       ),
-                    );
-                  },
-                ),
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.end,
+                        crossAxisAlignment: CrossAxisAlignment.stretch,
+                        children: [
+                          Spacer(),
+                          Center(
+                            child: Text(
+                              'SECTION ' +
+                                  TodaysScheduleList
+                                      .todaysSchedules[index].section
+                                      .toString(),
+                              style: GoogleFonts.raleway(
+                                color: TytoColors.white,
+                                fontSize: _screenWidth < 480 ? 10.0 : 20.0,
+                              ),
+                            ),
+                          ),
+                          Divider(
+                            color: Colors.transparent,
+                          ),
+                          Center(
+                            child: Text(
+                              TodaysScheduleList.todaysSchedules[index].time
+                                  .toString(),
+                              style: GoogleFonts.raleway(
+                                color: TytoColors.white,
+                                fontSize: _screenWidth < 480 ? 20.0 : 40.0,
+                                fontWeight: FontWeight.bold,
+                              ),
+                            ),
+                          ),
+                          Spacer(),
+                          ElevatedButton(
+                            style: ElevatedButton.styleFrom(
+                              primary: TytoColors.darkMintGreen,
+                            ),
+                            onPressed: () {
+                              ScheduleList._showRoomID(
+                                context: context,
+                                backgroundColor: TytoColors.darkMintGreen,
+                                message: 'RoomID: ' +
+                                    TodaysScheduleList
+                                        .todaysSchedules[index].roomID
+                                        .toString(),
+                                textColor: TytoColors.white,
+                              );
+                            },
+                            child: Padding(
+                              padding: const EdgeInsets.symmetric(
+                                vertical: 20.0,
+                              ),
+                              child: Text(
+                                'ENTER ROOM',
+                                style: GoogleFonts.raleway(
+                                  color: TytoColors.white,
+                                  fontWeight: FontWeight.bold,
+                                  fontSize: 20.0,
+                                ),
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                  );
+                },
               ),
             ),
     );
